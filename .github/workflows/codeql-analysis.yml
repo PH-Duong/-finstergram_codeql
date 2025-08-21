@@ -1,0 +1,36 @@
+name: CodeQL Analysis kotlin
+
+on:
+  push:
+    branches: [main]  # Chạy khi push vào main
+  pull_request:
+    branches: [main]  # Chạy khi có pull request
+  schedule:
+    - cron: '0 0 * * 0'  # Chạy hàng tuần vào Chủ Nhật lúc 0h
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['kotlin']  # Ngôn ngữ là kotlin
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        config-file: .github/codeql/codeql-config.yml  # chọn config
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
