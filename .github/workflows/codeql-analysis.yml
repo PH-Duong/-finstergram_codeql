@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['kotlin']  # Ngôn ngữ là kotlin
+        language: ['java']  # Ngôn ngữ là kotlin
 
     steps:
     - name: Checkout repository

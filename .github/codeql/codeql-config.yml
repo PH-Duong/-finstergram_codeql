@@ -1,4 +1,4 @@
-name: "Custom CodeQL Analysis for Kotlin"
+name: "Custom CodeQL Analysis for Java"
 queries:
   - uses: ./codeql-queries/
 paths:
